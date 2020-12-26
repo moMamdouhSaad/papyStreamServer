@@ -1,5 +1,6 @@
 const express = require('express')
 var bodyParser = require("body-parser");
+const node_media_server = require('./rtmp-server/media_server');
 
 
 
@@ -34,6 +35,9 @@ app.use(express.static(__dirname + "/"));
 app.get("/", (req,res,next)=>{
     res.sendFile(__dirname +'/index.html')
 });
+
+
+node_media_server.run();
 
 
 app.listen(port ,'0.0.0.0',() => {
